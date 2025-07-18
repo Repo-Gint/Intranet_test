@@ -138,7 +138,7 @@ class Orden_mantenimientoController extends Controller
 
             crear_registro_costo($orden->id);
 
-            $correos = array('Maintenance@grupointerconsult.com', 'Carmen.Reyes@grupointerconsult.com');
+            $correos = array('Maintenance@grupointerconsult.com', 'Carmen.Reyes@grupointerconsult.com', 'ismael.ramirez@grupointerconsult.com');
             Mail::send('Emails.Orden_Mantenimiento', ['orden' => $orden, 'request'=>$request], function($msj) use($correos){
                 $msj->subject('Nueva Orden de Mantenimiento');
                //$msj->to('Ana.Estrada@grupointerconsult.com');
