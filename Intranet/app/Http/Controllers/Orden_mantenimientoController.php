@@ -138,13 +138,13 @@ class Orden_mantenimientoController extends Controller
 
             crear_registro_costo($orden->id);
 
-            $correos = array('Maintenance@grupointerconsult.com', 'Alvaro.Velasquez@grupointerconsult.com', 'Carmen.Reyes@grupointerconsult.com');
+            $correos = array('Maintenance@grupointerconsult.com', 'Carmen.Reyes@grupointerconsult.com');
             Mail::send('Emails.Orden_Mantenimiento', ['orden' => $orden, 'request'=>$request], function($msj) use($correos){
                 $msj->subject('Nueva Orden de Mantenimiento');
                //$msj->to('Ana.Estrada@grupointerconsult.com');
                 $msj->to(auth()->user()->Empleado_rrhh->Contactos->Business_mail);
                 $msj->cc($correos);
-                $msj->bcc('Ana.Estrada@grupointerconsult.com');
+                $msj->bcc('luis.mendoza@grupointerconsult.com','eduardo.saldana@grupointerconsult.com');
             });
 
             flash('Se creó con éxito la orden con el número '.$orden->code)->success();
